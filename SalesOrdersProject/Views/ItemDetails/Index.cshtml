@@ -1,0 +1,47 @@
+﻿@model SalesOrdersProject.Models.Product
+
+@{
+    ViewBag.Title = "Item Detail Page";
+}
+
+<h2>Item Detail Page</h2>
+
+<div style="display: inline-block">
+    <div style="width: 30%; float: left;">
+        <img src="@Url.Content(Model.ProductImage)"
+             width="200"
+             height="150"
+             alt="@Model.ProductName"
+             title="@Model.ProductName" />
+    </div>
+
+    <div style="width: 70%; float: left;">
+        <h1>@Html.DisplayFor(modelItem => Model.ProductName)</h1>
+
+        <p>
+            @*@Html.DisplayFor(modelItem => Model.ProductDescLong)*@
+            @Html.Raw(@Model.ProductDescLong)
+        </p>
+
+        <p>
+            $@Html.DisplayFor(modelItem => Model.ProductPrice)
+        </p>
+
+        <p>@Html.ActionLink("More INfo", "Index", "Info",
+                          new { id = Model.ProductID},
+                          new { id = "ProductID" })
+        </p>
+
+        @using(Html.BeginForm("AddToCart", "ShoppingCart"))
+         {
+            <div>
+                @Html.HiddenFor(x => x.ProductID)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-sucess"
+                       value="AddToCart" />
+
+            </div>
+         }
+
+    </div>
+</div>

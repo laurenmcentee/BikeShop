@@ -1,0 +1,27 @@
+﻿@model SalesOrdersProject.Models.Product
+
+    <div style="display: inline-block">
+        <div style="width: 30%; float: left;">
+            <img src="@Url.Content(Model.ProductImage)"
+                 width="200"
+                 height="150"
+                 alt="@Model.ProductName"
+                 title="@Model.ProductName" />
+
+        </div>
+
+        <div style="width: 70%; float: left;">
+            <h3>@Html.DisplayFor(modelModel => Model.ProductName)</h3>
+
+            <p>@Html.DisplayFor(modelModel => Model.ProductDescShort)</p>
+
+            <p>$@Html.DisplayFor(modelModel => Model.ProductPrice)</p>
+
+            <p>@Html.DisplayFor(modelModel => Model.ProductQty) in stock</p>
+
+            <p>
+                @Html.ActionLink("More Info", "Index", "ModelDetails",
+                             new { id = Model.ProductID }, new { id = "ProductID" })
+            </p>
+        </div>
+    </div>

@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SalesOrdersDatabase2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryDescription" Type="nvarchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerFirstName" Type="nvarchar" MaxLength="25" />
+          <Property Name="CustomerLastName" Type="nvarchar" MaxLength="25" />
+          <Property Name="CustomerStreetAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerCity" Type="nvarchar" MaxLength="30" />
+          <Property Name="CustomerState" Type="nvarchar" MaxLength="2" />
+          <Property Name="CustomerZipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CustomerAreaCode" Type="smallint" />
+          <Property Name="CustomerPhoneNumber" Type="nvarchar" MaxLength="8" />
+          <Property Name="BillingAddress" Type="nchar" MaxLength="50" />
+          <Property Name="BillingCity" Type="nchar" MaxLength="50" />
+          <Property Name="BillingState" Type="char" MaxLength="2" />
+          <Property Name="BillingPostalCode" Type="nchar" MaxLength="10" />
+          <Property Name="BillingCreditCardNumber" Type="nchar" MaxLength="10" />
+          <Property Name="BillingExpireMonth" Type="nchar" MaxLength="12" />
+          <Property Name="BillingExpireYear" Type="nchar" MaxLength="4" />
+          <Property Name="Password" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeFirstName" Type="nvarchar" MaxLength="25" />
+          <Property Name="EmployeeLastName" Type="nvarchar" MaxLength="25" />
+          <Property Name="EmployeeStreetAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeCity" Type="nvarchar" MaxLength="30" />
+          <Property Name="EmployeeState" Type="nvarchar" MaxLength="2" />
+          <Property Name="EmployeeZipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="EmployeeAreaCode" Type="smallint" />
+          <Property Name="EmployeePhoneNumber" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderDetailQuotedPrice" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="OrderDetailQuantityOrdered" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="OrderShipDate" Type="datetime" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="ShippingAddress" Type="nchar" MaxLength="50" />
+          <Property Name="ShippingCity" Type="nvarchar" MaxLength="30" />
+          <Property Name="ShippingState" Type="nchar" MaxLength="2" />
+          <Property Name="ShippingPostalCode" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductDescShort" Type="nvarchar(max)" />
+          <Property Name="ProductDescLong" Type="nvarchar(max)" />
+          <Property Name="ProductImage" Type="nvarchar(max)" />
+          <Property Name="ProductPrice" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ProductQty" Type="int" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductVendors">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="VendorID" Type="int" Nullable="false" />
+          <Property Name="ProductVendorWholesalePrice" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ProductVendorDaysToDeliver" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="nvarchar" MaxLength="25" />
+          <Property Name="VendorStreetAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="VendorCity" Type="nvarchar" MaxLength="30" />
+          <Property Name="VendorState" Type="nvarchar" MaxLength="2" />
+          <Property Name="VendorZipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="VendorPhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="VendorFaxNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="VendorWebPage" Type="text" />
+          <Property Name="VendorEMailAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="OrderDetailsFK00">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderDetailsFK01">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrdersFK00">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrdersFK01">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductsFK00">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductVendorsFK00">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductVendors" Type="Self.ProductVendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductVendors">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductVendorsFK01">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="1" />
+          <End Role="ProductVendors" Type="Self.ProductVendors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="ProductVendors">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalesOrdersDatabase2ModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductVendors" EntityType="Self.ProductVendors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="OrderDetailsFK00" Association="Self.OrderDetailsFK00">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="OrderDetailsFK01" Association="Self.OrderDetailsFK01">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="OrdersFK00" Association="Self.OrdersFK00">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="OrdersFK01" Association="Self.OrdersFK01">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="ProductsFK00" Association="Self.ProductsFK00">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="ProductVendorsFK00" Association="Self.ProductVendorsFK00">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductVendors" EntitySet="ProductVendors" />
+          </AssociationSet>
+          <AssociationSet Name="ProductVendorsFK01" Association="Self.ProductVendorsFK01">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="ProductVendors" EntitySet="ProductVendors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalesOrdersDatabase2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.ProductsFK00" FromRole="Categories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAreaCode" Type="Int16" />
+          <Property Name="CustomerPhoneNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.OrdersFK00" FromRole="Customers" ToRole="Orders" />
+          <Property Name="BillingAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="BillingCity" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="BillingState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="BillingPostalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="BillingCreditCardNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="BillingExpireMonth" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="BillingExpireYear" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeAreaCode" Type="Int16" />
+          <Property Name="EmployeePhoneNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.OrdersFK01" FromRole="Employees" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderDetailQuotedPrice" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="OrderDetailQuantityOrdered" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.OrderDetailsFK00" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Self.OrderDetailsFK01" FromRole="OrderDetails" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderShipDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.OrdersFK00" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="Employee" Relationship="Self.OrdersFK01" FromRole="Orders" ToRole="Employees" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.OrderDetailsFK00" FromRole="Orders" ToRole="OrderDetails" />
+          <Property Name="ShippingAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ShippingCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingState" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="ShippingPostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescShort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ProductQty" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.ProductsFK00" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.OrderDetailsFK01" FromRole="Products" ToRole="OrderDetails" />
+          <NavigationProperty Name="ProductVendors" Relationship="Self.ProductVendorsFK00" FromRole="Products" ToRole="ProductVendors" />
+        </EntityType>
+        <EntityType Name="ProductVendor">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="VendorID" Type="Int32" Nullable="false" />
+          <Property Name="ProductVendorWholesalePrice" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ProductVendorDaysToDeliver" Type="Int16" />
+          <NavigationProperty Name="Product" Relationship="Self.ProductVendorsFK00" FromRole="ProductVendors" ToRole="Products" />
+          <NavigationProperty Name="Vendor" Relationship="Self.ProductVendorsFK01" FromRole="ProductVendors" ToRole="Vendors" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="VendorStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VendorCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="VendorState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="VendorZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VendorPhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="VendorFaxNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="VendorWebPage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VendorEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductVendors" Relationship="Self.ProductVendorsFK01" FromRole="Vendors" ToRole="ProductVendors" />
+        </EntityType>
+        <Association Name="ProductsFK00">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrdersFK00">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrdersFK01">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderDetailsFK00">
+          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderDetailsFK01">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductVendorsFK00">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductVendors" Type="Self.ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductVendors">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductVendorsFK01">
+          <End Role="Vendors" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="ProductVendors" Type="Self.ProductVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="ProductVendors">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalesOrdersDatabase2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductVendors" EntityType="Self.ProductVendor" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <AssociationSet Name="ProductsFK00" Association="Self.ProductsFK00">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="OrdersFK00" Association="Self.OrdersFK00">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="OrdersFK01" Association="Self.OrdersFK01">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="OrderDetailsFK00" Association="Self.OrderDetailsFK00">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="OrderDetailsFK01" Association="Self.OrderDetailsFK01">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="ProductVendorsFK00" Association="Self.ProductVendorsFK00">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductVendors" EntitySet="ProductVendors" />
+          </AssociationSet>
+          <AssociationSet Name="ProductVendorsFK01" Association="Self.ProductVendorsFK01">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="ProductVendors" EntitySet="ProductVendors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalesOrdersDatabase2ModelStoreContainer" CdmEntityContainer="SalesOrdersDatabase2Entities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="BillingExpireYear" ColumnName="BillingExpireYear" />
+                <ScalarProperty Name="BillingExpireMonth" ColumnName="BillingExpireMonth" />
+                <ScalarProperty Name="BillingCreditCardNumber" ColumnName="BillingCreditCardNumber" />
+                <ScalarProperty Name="BillingPostalCode" ColumnName="BillingPostalCode" />
+                <ScalarProperty Name="BillingState" ColumnName="BillingState" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerStreetAddress" ColumnName="CustomerStreetAddress" />
+                <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+                <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+                <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
+                <ScalarProperty Name="CustomerAreaCode" ColumnName="CustomerAreaCode" />
+                <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+                <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+                <ScalarProperty Name="EmployeeStreetAddress" ColumnName="EmployeeStreetAddress" />
+                <ScalarProperty Name="EmployeeCity" ColumnName="EmployeeCity" />
+                <ScalarProperty Name="EmployeeState" ColumnName="EmployeeState" />
+                <ScalarProperty Name="EmployeeZipCode" ColumnName="EmployeeZipCode" />
+                <ScalarProperty Name="EmployeeAreaCode" ColumnName="EmployeeAreaCode" />
+                <ScalarProperty Name="EmployeePhoneNumber" ColumnName="EmployeePhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderDetailQuotedPrice" ColumnName="OrderDetailQuotedPrice" />
+                <ScalarProperty Name="OrderDetailQuantityOrdered" ColumnName="OrderDetailQuantityOrdered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ShippingPostalCode" ColumnName="ShippingPostalCode" />
+                <ScalarProperty Name="ShippingState" ColumnName="ShippingState" />
+                <ScalarProperty Name="ShippingCity" ColumnName="ShippingCity" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderShipDate" ColumnName="OrderShipDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescShort" ColumnName="ProductDescShort" />
+                <ScalarProperty Name="ProductDescLong" ColumnName="ProductDescLong" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductVendors">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.ProductVendor">
+              <MappingFragment StoreEntitySet="ProductVendors">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="ProductVendorWholesalePrice" ColumnName="ProductVendorWholesalePrice" />
+                <ScalarProperty Name="ProductVendorDaysToDeliver" ColumnName="ProductVendorDaysToDeliver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Vendor">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorStreetAddress" ColumnName="VendorStreetAddress" />
+                <ScalarProperty Name="VendorCity" ColumnName="VendorCity" />
+                <ScalarProperty Name="VendorState" ColumnName="VendorState" />
+                <ScalarProperty Name="VendorZipCode" ColumnName="VendorZipCode" />
+                <ScalarProperty Name="VendorPhoneNumber" ColumnName="VendorPhoneNumber" />
+                <ScalarProperty Name="VendorFaxNumber" ColumnName="VendorFaxNumber" />
+                <ScalarProperty Name="VendorWebPage" ColumnName="VendorWebPage" />
+                <ScalarProperty Name="VendorEMailAddress" ColumnName="VendorEMailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

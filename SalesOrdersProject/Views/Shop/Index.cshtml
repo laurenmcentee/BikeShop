@@ -1,0 +1,88 @@
+﻿@model SalesOrdersProject.Models.ProductsModel
+
+@{
+    ViewBag.Title = "Bike Store Products Page";
+}
+
+<h2>Products Page</h2>
+
+@using (Html.BeginForm("Index", "Shop", FormMethod.Post,
+                        new { id = "ShopForm" }))
+{
+    @Html.HiddenFor(x => x.Pagination.CurrentPage)
+    @Html.HiddenFor(x => x.Pagination.ItemsOnPage)
+    @Html.HiddenFor(x => x.Pagination.TotalItems)
+
+    <div>
+        Category:
+        @Html.DropDownListFor(x => x.CategoryID,
+                              Model.Categories(),
+                              "--Select a Category--",
+        new
+        {
+            onchange = "document.getElementById('ShopForm').submit();"
+        })
+
+        <span>
+            Search For:
+            @Html.TextBoxFor(x => x.SearchString)
+
+            <input type="submit" value="Search" />
+        </span>
+    </div>
+
+    foreach (var item in Model.Products)
+    {
+        @Html.Partial("Product", item)
+        @*<div style="display: inline-block">
+                    <div style="width: 30%; float: left;">
+                        <img src="@item.ProductImage" width="200" height="150"
+                             alt="@item.ProductName" title="@item.ProductName" />
+                    </div>
+
+                    <div style="width: 70%; float: left;">
+                        <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
+
+                        <p>@Html.DisplayFor(modelItem => item.ProductDescShort)</p>
+
+                        <p>$@Html.DisplayFor(modelItem => item.ProductPrice)</p>
+
+                        <p>@Html.DisplayFor(modelItem => item.ProductQty) in stock</p>
+
+                        <p>
+                            @Html.ActionLink("More Info", "Index", "ItemDetails",
+                                         new { id = item.ProductID }, new { id = "ProductID" })
+                        </p>
+                </div>
+        </div>*@
+    }
+
+    <div class="pager">
+        @Html.PageLinks(Model.Pagination, x => Url.Action("Index", new { page = x,
+                     categoryID = Model.CategoryID }))
+    </div>
+}
+@*<table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+            <th>@Html.DisplayNameFor(model => model.ProductDescShort)</th>
+            <th>@Html.DisplayNameFor(model => model.ProductDescLong)</th>
+            <th>@Html.DisplayNameFor(model => model.ProductImage)</th>
+            <th>@Html.DisplayNameFor(model => model.ProductPrice)</th>
+            <th>@Html.DisplayNameFor(model => model.ProductQty)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductDescShort)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductDescLong)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductImage)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductPrice)</td>
+                <td>@Html.DisplayFor(modelItem => item.ProductQty)</td>
+                <td>@Html.ActionLink("More Info", "Info", new { id = item.ProductID })
+        </tr>
+        }
+  </table>*@

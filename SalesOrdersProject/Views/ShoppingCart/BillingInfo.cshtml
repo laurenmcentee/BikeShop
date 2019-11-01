@@ -1,0 +1,60 @@
+﻿@model SalesOrdersProject.Models.BillingInfo
+
+@{
+    ViewBag.Title = "Billing Information";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <h3>Bill to:</h3>
+    <div class="form-group">
+        <label>First Name</label>
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>First Name</label>
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>First Name</label>
+        @Html.TextBoxFor(x => x.CreditCardNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Expiration</label>
+        @Html.DropDownListFor(x => x.ExpireMonth,
+                        Model.Months(), "--Expire Month--",
+                        new { @class = "" })
+        @Html.DropDownListFor(x => x.ExpireYear,
+                       Model.Years(), "--Expire Year--",
+                       new { @class = "" })
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>City</label>
+        @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>State</label>
+        @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Postal Code</label>
+        @Html.TextBoxFor(x => x.PostalCode, new { @class = "form-control" })
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary"
+               type="submit" value="Checkout" />
+    </div>
+}
