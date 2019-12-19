@@ -32,7 +32,8 @@
           <Property Name="BillingCreditCardNumber" Type="nchar" MaxLength="10" />
           <Property Name="BillingExpireMonth" Type="nchar" MaxLength="12" />
           <Property Name="BillingExpireYear" Type="nchar" MaxLength="4" />
-          <Property Name="Password" Type="nchar" MaxLength="100" />
+          <Property Name="CustomerPassword" Type="nchar" MaxLength="50" />
+          <Property Name="CustomerEmailAddress" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -265,7 +266,8 @@
           <Property Name="BillingCreditCardNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="BillingExpireMonth" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
           <Property Name="BillingExpireYear" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CustomerPassword" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CustomerEmailAddress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -494,7 +496,8 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="SalesOrdersDatabase2Model.Customer">
               <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CustomerEmailAddress" ColumnName="CustomerEmailAddress" />
+                <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
                 <ScalarProperty Name="BillingExpireYear" ColumnName="BillingExpireYear" />
                 <ScalarProperty Name="BillingExpireMonth" ColumnName="BillingExpireMonth" />
                 <ScalarProperty Name="BillingCreditCardNumber" ColumnName="BillingCreditCardNumber" />

@@ -1,7 +1,29 @@
-﻿
+﻿@model SalesOrdersProject.Models.Customer
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Login Page</h2>
 
+<h3> Login </h3>
+
+@using (Html.BeginForm("Index", "Login"))
+{
+    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+    @Html.ValidationSummary(true, "Login Failed. Check Login Details")
+
+    <div class="form-group">
+        <label>Email Address</label>
+        @Html.TextBoxFor(x => x.CustomerEmailAddress, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label> Password </label>
+        @Html.TextBoxFor(x => x.CustomerPassword, new { @class = "form-control" })
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="login" />
+    </div>
+}

@@ -23,7 +23,7 @@ namespace SalesOrdersProject
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-sandstone.css",
+                      "~/Content/bootstrap-lumen.css",
                       "~/Content/Site.css"));
         }
     }

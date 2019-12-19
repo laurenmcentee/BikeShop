@@ -170,13 +170,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemDetailsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +223,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SalesOrdersDatabase2Context.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SHA256.cs" />
     <Compile Include="Models\ShippingInfo.cs" />
     <Compile Include="Models\ShoppingCartItemModel.cs" />
     <Compile Include="Models\ShoppingCartModel.cs" />
@@ -234,16 +235,57 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-lux.css" />
-    <Content Include="Content\bootstrap-sandstone.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="content\bootstrap-lumen.css" />
+    <Content Include="content\bootstrap-lux.css" />
+    <Content Include="content\bootstrap-sandstone.css" />
+    <Content Include="content\bootstrap-theme.css" />
+    <Content Include="content\bootstrap-theme.min.css" />
+    <Content Include="content\bootstrap.css" />
+    <Content Include="content\bootstrap.min.css" />
+    <Content Include="content\images\AeroFlo-ATB-Wheels.jpg" />
+    <Content Include="content\images\Cleaar-Shade-85-T-Glasses.jpg" />
+    <Content Include="content\images\Cosmic-Elite-Road-Warrior-Wheels.jpg" />
+    <Content Include="content\images\Cycle-Doc-Pro-Repair-Stand.jpg" />
+    <Content Include="content\images\Dog-Ear-Aero-Flow-Floor-Pump.jpg" />
+    <Content Include="content\images\Dog-Ear-Cycle-Computer.jpg" />
+    <Content Include="content\images\Dog-Ear-Helmet-Mount-Mirror.jpg" />
+    <Content Include="content\images\Dog-Ear-Monster-Grip-Gloves.jpg" />
+    <Content Include="content\images\Eagle-FS-3-Mountain-Bike.jpg" />
+    <Content Include="content\images\Eagle-SA-120-Clipless-Pedals.jpg" />
+    <Content Include="content\images\Glide-O-Matic-Cycling-Helmet.jpg" />
+    <Content Include="content\images\GT-RTS-2-Mountain-Bike.jpg" />
+    <Content Include="content\images\HP-Deluxe-Panniers.jpg" />
+    <Content Include="content\images\King-Cobra-Helmet.jpg" />
+    <Content Include="content\images\Kool-Breeze-Rocket-Top-Jersey.jpg" />
+    <Content Include="content\images\Kryptonite-Advanced-2000-U-Lock.jpg" />
+    <Content Include="content\images\Nakoma-Lok-Tight-U-Lockwebp.jpg" />
+    <Content Include="content\images\Pro-Sport-Dillo-Shades.jpg" />
+    <Content Include="content\images\Proformance-ATB-All-Terrain-Pedal.jpg" />
+    <Content Include="content\images\ProFormance-Toe-Klips-2G.jpg" />
+    <Content Include="content\images\Road-Warrior-Hitch-Pack.jpg" />
+    <Content Include="content\images\Shinoman-105-SC-Brakes.jpg" />
+    <Content Include="content\images\Shinoman-Deluxe-TX-30-Pedal.jpg" />
+    <Content Include="content\images\Shinoman-Dura-Ace-Headset.jpg" />
+    <Content Include="content\images\StaDry-Cycling-Pants.jpg" />
+    <Content Include="content\images\TransPort-Bicycle-Rack.jpg" />
+    <Content Include="content\images\Trek-9000-Mountain-Bike.jpg" />
+    <Content Include="content\images\True-Grip-Competition-Gloves.jpg" />
+    <Content Include="content\images\Turbo-Twin-Tires.jpg" />
+    <Content Include="content\images\Ultimate-Export-2G-Car-Rack.jpg" />
+    <Content Include="content\images\Ultra-2K-Competition-Tire.jpg" />
+    <Content Include="content\images\Ultra-Pro-Rain-Jacket.jpg" />
+    <Content Include="content\images\Victoria-Pro-All-Weather-Tires.jpg" />
+    <Content Include="content\images\Viscount-C-500-Wireless-Bike-Computer.jpg" />
+    <Content Include="content\images\Viscount-CardioSport-Sport-Watch.jpg" />
+    <Content Include="content\images\Viscount-Microshell-Helmet.jpg" />
+    <Content Include="content\images\Viscount-Mountain-Bikes.jpg" />
+    <Content Include="content\images\Viscount-Tru-Beat-Heart-Transmitter.jpg" />
+    <Content Include="content\images\Wonder-Wood-Cycle-Socks.jpg" />
+    <Content Include="content\images\X-Pro-All-Weather-Tires.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="content\Site.css" />
     <Content Include="Models\SalesOrdersDatabase2Context.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SalesOrdersDatabase2Context.edmx</DependentUpon>
@@ -321,17 +363,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="content\bootstrap.min.css.map" />
+    <Content Include="content\bootstrap.css.map" />
+    <Content Include="content\bootstrap-theme.min.css.map" />
+    <Content Include="content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />

@@ -83,7 +83,6 @@ textarea {
     opacity: 0;
     -webkit-transition: 2s all ease-in-out .1s;
     -moz-transition: 2s all ease-in-out .1s;
-    -ms-transition: 2s all ease-in-out .1s;
     -o-transition: 2s all ease-in-out .1s;
     transition: 2s all ease-in-out .1s;
 }
@@ -92,7 +91,6 @@ textarea {
     opacity: 1;
     -webkit-transition: 2s all ease-in-out .1s;
     -moz-transition: 2s all ease-in-out .1s;
-    -ms-transition: 2s all ease-in-out .1s;
     -o-transition: 2s all ease-in-out .1s;
     transition: 2s all ease-in-out .1s;
 }

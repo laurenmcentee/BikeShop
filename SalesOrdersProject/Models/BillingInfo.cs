@@ -14,7 +14,7 @@ namespace SalesOrdersProject.Models
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Billing Last Name is Mandatory")]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Billing Card NUmber Name is Mandatory")]
+        [Required(ErrorMessage = "Billing Card Nmber Name is Mandatory")]
         public string CreditCardNumber  { get; set; }
         [Required(ErrorMessage = "Billing Address is Mandatory")]
         public string Address { get; set; }
@@ -45,7 +45,13 @@ namespace SalesOrdersProject.Models
         {
             return new SelectList(new string[]
             {
-                "2019", "2020", "2021", "2022",
+                //int year = DateTime.Now.Year;
+                //for (int i = year - 5; i <= year + 5; i++)
+                //{
+                //
+                //}
+
+                 "2019", "2020", "2021", "2022",
                 "2023", "2024", "2025", "2026",
                 "2027", "2028", "2029", "2030"
             });
